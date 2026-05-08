@@ -1,0 +1,19 @@
+package com.spring.springbootjdbc;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class EmployeeController {
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @GetMapping("/save")
+    public String save() {
+        jdbcTemplate.update("insert into employee values(?,?,?)",456,"Keerthana",4000000);
+        return "Cheppara koolie kufli";
+    }
+}
